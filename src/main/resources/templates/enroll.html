@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>유저목록</title>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link th:href="@{/css/materialize.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link th:href="@{/css/customize.css}" type="text/css" rel="stylesheet"/>
+</head>
+<body style="background-color: #f5f5f5;">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Kakao Mall</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="productList">상품 목록</a></li>
+            <li><a href="#">구매 상품 조회</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="loginForm">로그인<span class="sr-only">(current)</span></a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				<div class="col s12 center">
+					<div class="vertical-container">
+						<div class="login-shadow vertical-subcontainer">
+							<div class="row">
+								<div class="col s12">
+									<p style="margin:7rem 0 3rem 0; font-size:2rem;" class="blue-text"> Kakao Mall <span class="black-text">계정만들기</span> </p>
+								</div>
+							</div>
+							<div style="margin:0;" class="row">
+
+								<form name="userEnroll" method = "post" th:action="@{/users/create}" th:object="${userForm}" class="col s12" onsubmit="return tocheckpw1()">
+									<div style="margin:0;" class="row">
+										<div class="input-field col s12">
+											<input id="userId" name="userId" type="text" th:field="*{userId}" class="validate" th:errorclass="error-input" 
+													value="test" placeholder="User Id" required/>
+										</div>
+									</div>
+									
+									<div style="margin:0;" class="row">
+										<div class="input-field col s6">
+											<input style="margin:0;" id="password" name="password" type="password" class="validate" th:field="*{password}"
+													th:errorclass="error-input" value="test" placeholder="password" required/>
+										</div>
+										<div class="input-field col s6">
+											<input style="margin:0;" id="password_check" name="password_check" type="password" class="validate" 
+													placeholder="password_check" required="required" />
+										</div>
+									</div>
+	
+									<div style="margin:0;" class="row">
+										<div class="input-field col s12">
+											<input style="margin:0;" id="name" type="text" name="name" class="validate" th:field="*{name}"
+													th:errorclass="error-input" value="test2" placeholder="name" required="required"/>
+										</div>
+									</div>
+									<div style="margin:0;" class="row">
+										<div class="input-field col s12">
+											<input id="gender" name="gender" type="text" class="validate" th:field="*{gender}" th:errorclass="error-input" value="test3"
+													placeholder="gender" required="required"/>
+										</div>
+									</div>
+									<input style="margin-top:5rem; margin-bottom:5rem;" type="submit" class="center s12 btn blue darken-4" name="newmember" value="입력완료" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <script>
+      function tocheckpw1() {
+        var pw = document.getElementById('password').value;
+        var pwck = document.getElementById('password_check').value;
+
+        if (pw != pwck) {
+            alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
+            return false;
+        }
+      }
+  </script>
+
+</body>
+</html>

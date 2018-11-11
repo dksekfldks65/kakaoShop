@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<title>카카오몰 사이트</title>
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Kakao Mall</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="productList">상품 목록</a></li>
+            <li><a href="saleTest">구매 상품 조회</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active" id="login"><a href="loginForm">로그인<span class="sr-only">(current)</span></a></li>
+            <li class="active" id="logout"><a href="logout">로그아웃<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+	<div style="text-align: center;">
+ 		<img th:src="@{/img/kakaoMain.png}" alt="이미지 준비중 입니다." width=70%/>
+ 	</div>
+ 	
+ 	
+ 	
+ <script th:inline="javascript">
+	var loginFlag = [[${login}]];
+	var login = document.getElementById("login");
+	var logout = document.getElementById("logout");
+	if(loginFlag !=null){
+		login.style.display = 'none';
+		logout.style.display = 'block';
+	}
+	else{
+		login.style.display = 'block';
+		logout.style.display = 'none';
+	}
+</script>
+  	
+</body>
+</html>

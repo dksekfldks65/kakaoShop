@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS users (user_id VARCHAR(50) PRIMARY KEY NOT NULL, user_password VARCHAR(150),user_name VARCHAR(30), user_gender VARCHAR(20));
+CREATE TABLE IF NOT EXISTS products (product_id VARCHAR(100) PRIMARY KEY, product_category VARCHAR(200), product_name VARCHAR(100), product_price INT, product_desc VARCHAR(1000), product_remain INT, product_url VARCHAR(600));
+CREATE TABLE IF NOT EXISTS sale_history (user_id VARCHAR(100), product_id VARCHAR(100), sale_num INT, sum_price INT);
